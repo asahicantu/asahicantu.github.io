@@ -2479,9 +2479,9 @@
 		-webkit-justify-content: space-between;
 		-ms-justify-content: space-between;
 		justify-content: space-between;
-		background-color: #1f1815;
+		background-color: #161514;
 		background-attachment: scroll,								fixed;
-		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
+		/* background-image: url("../../images/bg.jpg"); */
 		background-position: top left,							top left;
 		background-repeat: repeat,								no-repeat;
 		background-size: auto,								auto 100%;
@@ -3123,5 +3123,45 @@
 				margin-left: 0;
 				padding-left: 0;
 			}
+
+			#particles-js canvas {
+				position: absolute;
+				z-index: -1;
+				width: 100%;
+				height: 100%;
+			}
+
+			/* #particles-js canvas {
+				display: block;
+				-webkit-transform: scale(1);
+				-ms-transform: scale(1);
+				transform: scale(1);
+				opacity: 1;
+				-webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+				transition: opacity .8s ease, transform 1.4s ease;
+			}
+
+			#particles-js {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				z-index: -10;
+				top: 0;
+				left: 0;
+			} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
 
 	}
