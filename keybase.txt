@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/asahicantu
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://asahicantu.com
+  * I am asahicantu (https://keybase.io/asahicantu) on keybase.
+  * I have a public key with fingerprint CFEC 7891 8691 B87C 23BC  B0F5 C6EA 8165 A69A ECAD
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120cdd2463225a5baf08eeacf137719f7f5e00634c8b205b6a6ef84985a55a2af9f0a",
+      "fingerprint": "cfec78918691b87c23bcb0f5c6ea8165a69aecad",
+      "host": "keybase.io",
+      "key_id": "c6ea8165a69aecad",
+      "kid": "0101128f01708530937e6a6a43c29c9cebc3568ae4f19bccd8e035886425494116550a",
+      "uid": "c889ec32760d052d28e753a562f9ea19",
+      "username": "asahicantu"
+    },
+    "service": {
+      "hostname": "asahicantu.com",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1586628433,
+  "expire_in": 157680000,
+  "prev": "9ff151a1ad0a4510f3d2732d9cc5effcc138b26473a1e2228716cecd15f3471f",
+  "seqno": 21,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNwAnicbZJ/UJRFHMaPw5OEESucGAyZeAc1Zy56d9/fhw1UFjCVM1Bjc5oe++67
+L7yd3B13B3khIuJMMp2axUjKTGo6SEj+gIHIlCAddDiEdBjJQgNkMvRIPLPEUHqP
+8q/af3Z29/M8+3y/u2fmRhqiI7puVJC6PcEvIwKdtcWGtR9H5ZRSslPxUZZSyk5m
+JrJOIR6vza4plIWiAaSxokCWZyDkECcjlRYJQVgFjCAASRVUjtA0z7BYlCHNyTzi
+iSqykqjDHIJIlVQaUWZK1Rz5xO1yaw6vbotVggVRAiIvAVkUMGRkLNMqh3mCRMBz
+iJcQwUjRhQVOT1ihh5ORh6RqTn1PX9hm4v0P/yg3DQAUVRoItMgxtMQIRI+GWAZD
+CUuYyJjheBERVgWSjLEiEprhRJFnIcdKLNA9uZncxf/cI4oSwQwUeFqhOahAkQgc
+gzgeqhJBQAqDHuJ2oEKi08iDCjSMHN5iqsxM6fslGibh1oZr+Q+Tip2Fut7ldnqd
+2LlOPyvwel2WsNTrc4XZ94hs+9fFJmsORW+lLighbo/mdFAWoJPYq4VtASfyPBRZ
+hjFTZL1LcxObFiY4gRdpfYSvISW6paSqgAMIIIVGLAdolVGgwEBFwpgjqooxYPT3
+5FmBQYBACEUB8JhgBXAqwwpApcJ1FTmclAUCPSfK1z09Wr4DeYvdhCr7rvOdWYaI
+aMNskzH8xwzRcx5/9PO+OjFvemVx9PiF9IwVbcN3rCFxYSi1Eh577KnCXRmHJ9/q
+LW13LBsybKzMHfvluFTe2JFy+P5g98kzcZcC1dC/7YnqP5qtMZlb44oHDjXV7B2c
+XPDkAe6biStCUV8/mOc0JlkzDafnBDvld5t6tr9vb4qb/Xpc+UdNP/++ZjB7SfJP
+06W7bl/z56EXSfO55OwHn69/dWPk5Z1Xlm1fNL757OQzL1elTsSM1OadXzXhD0R9
+n7UiPqp5d2sZNffIS4WrIls+G3UnppnMyN43cHAqaw+8vqF2MDbQci+Q8vwXPot7
+fOi472vrpp2La+puGceWl2Um1dSckW4tznku/WoMPSZc1lLYG31y1zYqAboHJu5k
+nj050JDRPT1Rz4y3tY58Gh3sbr3p2/fwNeZ6fNTogTld83uGjgQudIdO25ct/OBS
+hnn9xflG4znYdurbxKv7/VOOvx6uftaadLso78NMlwWs3HfxqLH312TTpD2p/VDv
+vVlVacq1/i2moh1d9xNDwz8O97SQN4KTBysqLqet3rK0bH9t6PTZP22NxyqWJ3Cm
+3Ys6lVjH5pux3qerXujYVD189EhMo6nyQfwrWYmfnPPnGm0X3777W2/IzzTurW/I
+tUf0T+WsaWwvqIc/mJeubrCuPeHLCrWlVwXvsvm4b0nL1fNbScyGkVnBhPy67EDH
+my2jbd7jC8pPrcs7GPgbSWTSKw==
+=Y2UA
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/asahicantu
+
+==================================================================
