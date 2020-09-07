@@ -2044,6 +2044,7 @@
 
 		.image.thumb {
 			text-align: center;
+			
 		}
 
 			.image.thumb:after {
@@ -2147,6 +2148,7 @@
 
 		ul li {
 			padding-left: 0.5em;
+			text-align: left;
 		}
 
 		ul.alt {
@@ -3190,7 +3192,9 @@
 
 
 
-
+			.img-thumb{
+				
+			}
 
 
 
