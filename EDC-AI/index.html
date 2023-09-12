@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+
+	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
+
+    <link rel="stylesheet" href="css/videolayout.css" />
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+		  <div>
+			  <a href="../index.html"><i class="fa fa-arrow-left"></i>Back to HomePage</a>
+		  </div>
+<!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0"></script></section><section  data-markdown><script type="text/template"></grid>
+<!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## AI / AGI
+Automation, usability and potential consequences for society
+> By Asahi Cantu
+
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Prelude
+> "There are decades where nothing happens; and there are weeks where decades happen..."
+
+\- Vladimir Ilyich Lenin
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<video data-autoplay controls>
+	<source src="../rsc/AI/uncanny.mp4" type="video/mp4"></source>
+</video>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+## <i class="fas fa-user"></i> About me ...  
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 20%; height: 55%; width: 40%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+* Software engineer
+*  Msc. Data science
+</div>
+
+<div class="" style="position: absolute; left: 40%; top: 20%; height: 55%; width: 60%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+* Capgemini
+* Fullstack dev
+* STID Project
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## About...
+
+<iframe width="650" height="450" src="https://www.youtube.com/embed/-P-ein58laA?si=M7p1yJ2tt0UB40Av&amp;controls=0&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## In the beginning...
+* NLP (Natural language processing)
+	* Text vectorization
+	* Summarizing
+	* Sentiment analysis
+* BERT (2018)
+	* Bidirectional Encoder Representation from Transofrmers
+</div>
+
+<aside class="notes"><p>![[notes/Slide1]]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## About transformers
+<img src="../rsc/AI/transformer.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### About transformers
+
+* Sequences, (text translation, best possible solution probability) 
+*  Semi-supervised learning
+* Pretrained (Unsupervised)
+* Attention / Parallel
+* Fined-Tunning (Supervised)
+</div>
+
+<aside class="notes"><p>This  research by google was indeed so meaningful, back then I did not know the impact such paper had made to the computer science and Artificial intelligence research, IT turns out that all companies realized the breakthrough of the transformers and began to make use of it When this happened researchers realized how a massive change in the world of language models and Natural Language Processing could be achieved to process and generate &quot;knowledge&quot;, text summarization, sentiment analysys and effective machine leargning under spoken language 
+I am highlighning this because 5 years ago we were just scratching and refining the science of what today is Chat GPT, and September 2022, a community version of ChatGPT was released to the public</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The advent of GPT
+Generative Pre-Trained  Transformer (Nov. 2022) 
+<img src=	AI/GPT.png" alt="" style="width: 300px; object-fit: fill">
+</div>
+
+<aside class="notes"><p>![[notes/Slide3]]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# AI-Grief
+<img src="../rsc/AI/Grief.png" alt="" style="object-fit: scale-down">
+</div>
+
+<aside class="notes"><p>![[notes/slide4]]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Denial
+* Generative
+	* Text
+	* Image
+	* Music
+	* Video
+	* Voice
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Denial
+<img src="DCA/Resources/AI_IQ.png" alt="" style="width: 700px; height: 550px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Denial
+<img src="../rsc/AI/GPTPaperWithQRCode.png" alt="" style="width: 700px; height: 400px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+* 23 July 2022. Blake Lemoine, (google) gets fired for claiming that LamDA is sentient
+* In 2022 we would be certain that words were generated by humans
+
+<iframe width="500" height="250" src="https://www.youtube.com/embed/LWiM-LuRe6w?si=dHDQJgeK5cghLb8s&amp;start=812" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<aside class="notes"><p>At the beginning I could not believe it, it was scary to see what the model was capable of doing, dialogs were so deep and could even see myself asking for polite questions ..</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Has AI become sentient?? 
+<img src="DCA/Resources/QRCodeAIAndTheFutureOfHumanityHarari.png" alt="" style="width: 40px; object-fit: fill">
+
+<iframe width="650" height="450" src="https://www.youtube.com/embed/LWiM-LuRe6w?si=dHDQJgeK5cghLb8s&amp;start=1770" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<aside class="notes"><p>We are asking the wrong question…</p>
+<ul>
+<li>AI has managed to &quot;hack the Operating System&quot; of humans</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Anxiety
+* March 29th 2023
+	*  Calls to stop AI research for 6 months
+* Deep fakes
+* Generative  *
+</div>
+
+<aside class="notes"><p>So i started developing anxiety
+Start consuming lots of content about catastrophic and bad use of AI
+AI learns bengali by itself
+Can communicate with animals
+Can learn/decipher any known language in the world?
+Generative…
+    Child pornography
+    Movies music..
+    How can we defend against that?
+    We will need personal agents adapted
+    Right to privacy - Never give up privacy
+    Hyper -
+        Individuality, connectivity
+        The extension of respect and indivduality will extend the borders - May be it will be harder
+        Sam altman World coin 
+        AI Agents</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Anxiety
+
+<img src="../rsc/AI/2023_LLM_SIZE.png" alt="" style="width: 700px; height: 550px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Anxiety
+<img src="../rsc/AI/2023-2024_Optimal_LLM.png" alt="" style="width: 700px; height: 550px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### AI crime-scenarios of high concern
+* Audio/Video Impersonation
+* Driverless vehicles as weapons
+* Tailored Phishing
+* Disrupting AI controlled systems
+* Large-scale blackmail
+* Authored fake news
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### AI crime-scenarios of medium concern
+* Military Robots
+* Snake oil (fraudulent services)
+* Data poisoning
+* Learning-based cyber-attacks
+* Autonomous attack drones
+* Online eviction (denial of access)
+* Tricking face recognition
+* Finanical market manipulation
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### AI crime-scenarios of low concern
+* Bias exploitation
+* Burglar bots
+* Evading AI detection
+* AI-authored fake reviews
+* Forgery (fake content generation)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Depression
+
+### Are we doomed?
+* Code in github (Copilots)
+* Loss of self consciousness
+* Something is  going to break  - out of control
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Job-fusion
+- Transport/Supply chain
+- Medicine
+- Code
+- Education
+- Management
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Barganing
+> ...  But machines have no feelings ...
+* No need to have "human" feelings
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Barganing
+
+> ... But machines cannot do...
+
+* Technology respected so far our 5 senses
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Barganing
+> ...  But machines cannot code as good as...
+* (GitHub)~30-40%  of  source code is being written by AI
+	* Copilot
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Barganing
+
+* Machines are tought by machines 
+* Write some code to serve other machines 
+	* Affect the WWW
+* Have own offspring
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Acceptance
+* The information you consume <span style="color:red">like it or not</span> will affect your behavior
+* Beware of the emergent properties of AI
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### To face problems of tremendous complexity
+
+- Social inequality / Famine / Democracy / Healthcare
+- Climate change
+- Child education
+- Immigration
+- Wars
+- Future energy
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Acceptance
+
+<iframe src="https://www.worldometers.info/world-population/" style="width: 100%; height: 600px; border: 0px none;" ></iframe>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Acceptance
+<iframe src="https://ourworldindata.org/explorers/food-prices?facet=none&country=NGA~BGD~IND~ETH~MEX~USA~BRA~GBR&Diet=Healthy+diet&Cost+or+Affordability=Affordability&Affordability+metric=Share+that+cannot+affordhideControls&hideControls=true" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Ask  - Conceal
+
+* Why do I  believe what I believe? / What are your values?
+* When is it enough? / How much is enough?
+* What is it that makes us human?
+* Biases and their multiplier effect
+* Emotional intelligence Development
+</div>
+
+<aside class="notes"><p>How to stop and be satisfied with what we have
+Learn how to be satisfied - not necessarly the happiest
+We are very good in acquiring power, but Power does not makes us happy</p>
+<p>We are unstoppable, translate power into happiness</p>
+<p>Think if it is really necessary to….
+The prissoners dilemma
+Second order consequences
+How do we define sentient, how do we still define consciousness
+sentinent [born at a certain point on time]
+ability to sense the world environment
+Awarenesss and response to the environment</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+##  Regulations in the near future
+
+* Make it mandatory to disclose non-human generated content
+* Government protection and regulation
+* Enterprise accountability
+* Education
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Find the balance
+ * Develop critical thinking
+ * Educate your loved ones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Our challenges as developers
+* Use for individual benefit
+* Tagging AI generated content 
+* Selective privacy
+* Create universal accessible systems
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Acceptance
+#### Do not miss the wave
+* Learn to behave ethically
+* Reinforcement learning with human feedbacks
+* Do not use AI in an unethical way
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Acceptance
+* This is...
+	* Out of my control
+	* A new reality
+* But I can
+	* Spend time and teach my beloved ones
+	* Be part of the new social fabric
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Epilogue...
+Madmax (1979)...
+<video controls witdh><source src="../rsc/AI/madmax.mp4" type="video/mp4"></video>
+</div>
+
+<aside class="notes"><p>I&#39;ve seen things, you people wouldn&#39;t believe, hmmm.      ... attack ships on fire off the shoulder of Orion.     I&#39;ve watched see Beams glitter in the dark near the Tannhauser Gate. All those moments, will be lost in time like tears in rain...&quot; Time to die...</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## The end
+### Thank you (Are you?...)
+<img src="DCA/Resources/CircleOfEmotions.png" alt="" style="width: 300px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template">---</script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Draft slides
+## In Norway
+[Statistisk sentralbyrå (ssb.no)](https://www.ssb.no/)
+<iframe src="https://www.ssb.no/" style="width: 100%; height: 600px; border: 0px none;"></frame>
+<iframe src="https://www.worldometers.info/demographics/norway-demographics/#life-exp" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Callouts can have custom titles
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+
+<div class="callout callout-color1">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-info-circle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Callouts can have custom titles
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Callouts can have custom titles
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><p>What are the current values for humanity so we tan transmit these values to new AI models?</p>
+<p>Big world problems solving</p>
+<ul>
+<li>Economic</li>
+<li>Politic</li>
+<li>Social</li>
+<li>Transportation</li>
+<li>Logistics,</li>
+<li>Energy</li>
+<li>Energy storage
+  We have to specialize</li>
+</ul>
+<p>Happiness = events - expectations</p>
+<p>Purpose has been messed up</p>
+<p>Whatever happens the answer relies in the collection short-mid-long term  our present decisions</p>
+<p>May 14, 2023</p>
+<ul>
+<li>harari 
+  13:18 AI has become sentient - Google engineer
+  31:00 I just told you a story..
+AI has the operating system of human kind</li>
+</ul>
+<p>Min 29:39</p>
+<p>Carl jung y su creencia sobre el espiritismo  / Carl jung modern man</p>
+<p>Back to architecture / Architectural behaviour</p>
+<p>Resilience of human beings, we will adpat and find our own way,
+Let is trust in us being human,
+What can I do to add value
+Impotence and hopelesness will just block us
+Lets put our focus in what we want and not to avoid what I fear</p>
+<p>I am one individual and only one
+I cannot avoid it
+But I cannot give up to what is in my hands, what I can do</p>
+<p>Generative AI is making that the variables in the real world which probability used to be infimum will suddenly have a <strong>multiplier effect</strong> in the real world, which will triger exponential and logarithmic phenommenons making what years or months before was improbable a new reality.</p>
+<p>How can IA help us be advise for the little we know, for the new things to come</p>
+<p>World is just getting more and more complex
+It is impossible just for a single human or group of people to assess and get to know things
+One one hand we have trusted IA&#39;s that can work and help to be advisors
+On the other hand we have Biased IA&#39;s which we may not fully trust</p>
+<p>No human (hardly few of them) truly know how such machines have managed to learn
+Be afraid not of the AI tech, but the orchestrators</p>
+<p>With big projects, in IT sector, where project plans and budget have been settled for the next 5 years with current technologies, and restrictions .. How can we overcome this Technology gap ?</p>
+<p>Think of ourselves as bodies with immune system  - To prevents us be harmed from the exterior ,it will just organically, naturally grow to become a hybrid second personality part of us</p>
+<p>Think now that all the jobs that are handled by humans aiming to fulfill repetitive tasks aave the potential of being replaced and substituted by robots, and then coordinated-orchestrated</p>
+<ul>
+<li>And then Github copilot -- is that a must?</li>
+<li>Then we have to acknowledge that from now on most of the code will be generated by AI and not us</li>
+<li>What works for us . In favor of us will eventually might work against us</li>
+</ul>
+<p>Just before that researchers spend a year to tune it, tweak it, tag it and use human interaction to refine the model</p>
+<blockquote>
+<p>you need to take care of your parents when you grow older</p>
+</blockquote>
+<p>Juatice
+Creencias y eatereotipos
+Sesogs fáciles de cambiar xin unformacion</p>
+<p>How would you feel now if you took a picture of children, someone would take wihtout your permission</p>
+<p>Think about where you will guide your attention, what will you consume, what you will produce and to whom
+2024.... International elections, global warming goals getting closer</p>
+<p>1
+10
+100
+1,000
+10,000
+100,000
+1,000,000
+10,000,000
+100,000,000
+1,000,000,000 x 8</p>
+<p>8 billion people</p>
+<p>Our right to data ownership
+Selective privacy
+What will happen to our shadow profiles?
+beware of  bubbles...and your own bubbles</p>
+<p>Top skill is how you and I connect it very quickly and have a meaninful conversation
+If graphic designer is already a must to learn generative
+We as developers should be hands on and concern as well on its usage</p>
+<p>the 4th inevitable - chart of intelligence 
+Morality is part of ultimate protection - life itself created out from abundance
+Early stage
+Mid-term dystopia - 
+You are the one who chooses what to see and what to consume
+Teenager stage
+in hands of bad ones 
+Moral code
+GAI
+The inevitable</p>
+<p>Biased world, word embeddings example, master s9ave, let. Lene go
+Slavery nowaday
+Africa. 
+Uganda workers for open ai
+History is told bybwinners
+Biasd in DNA</p>
+<p>CLUSTERS. OF PEOPLE COMMON GROUND, IMPORTANCE TO FIND A GEBERAL TRUE MEANING SBOUT BEING A HUMAN
+HOW MUCH DOES A HUMAN LIGE COST</p>
+<p>EUROCENTEIC/WESTERN WHITE PATRIARCHAL SOCIETY </p>
+<p>LOOK AT STSTISTICS</p>
+<p>MYSOGINISTIC
+BCOMOUTERS WERE GENERALLY BUOLT HY THESE PEOPLE</p>
+<p>DATA CORPUS
+OUR WORLD I DATA FOR GENDER AND POPULATUON</p>
+<p>Towards more neutral AI
+WE ALL ARE. PART OF THE FABRIC AND FNA OF LLMS, BY OUR SOCIAL MEDIA
+FB
+TICKTOCK
+TWITTER.. ETX</p>
+<p>Our la guava has been hacked because our ability to be surprised has changed 
+Consumarism
+The true beneath being human </p>
+<p>Why is sentiment analysis omportsnt
+The building blocks for corpus  analysis in our llms</p>
+<p>MY PERSONAL VOIDS</p>
+<p>Hostory and the manipulation of history</p>
+<p>The truth matters </p>
+<p>drug abuse, addictions
+Behavioural addictions</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Useful references
+##### News
+```embed
+title: "Move 37 Explained"
+image: "https://img.youtube.com/vi/vI9BllT7ovg/sddefault.jpg"
+description: "Why was AlphaGo’s Move 37 against Lee Sedol so significant? Why was it so important that I named my 10 week course on deep reinforcement learning on it? In t…"
+url: "https://www.youtube.com/watch?v=vI9BllT7ovg"
+```
+
+
+```embed
+title: "Integrated AI - The sky is entrancing (mid-2023 AI retrospective)"
+image: "https://img.youtube.com/vi/RnkyM74-LAw/maxresdefault.jpg"
+description: "Read the paper: https://lifearchitect.ai/the-sky-is-entrancing/The Memo: https://lifearchitect.ai/memo/Flintstones: https://msra-nuwa.azurewebsites.net/#/Sou…"
+url: "https://www.youtube.com/watch?v=RnkyM74-LAw"
+```
+
+
+```embed
+title: "The race to understand the exhilarating, dangerous world of language AI"
+image: "https://wp.technologyreview.com/wp-content/uploads/2021/05/MIT_AI.Language_final.jpg?resize=1200,600"
+description: "Hundreds of scientists around the world are working together to understand one of the most powerful emerging technologies before it’s too late."
+url: "https://www.technologyreview.com/2021/05/20/1025135/ai-large-language-models-bigscience-project/"
+```
+
+##### About LLM's
+```embed
+title: "The Large Language Model (LLM) Index | Sapling"
+image: "https://sapling.ai/static/img/sapling-logo-horizontal-white.svg"
+description: "A comprehensive list of large language models (LLMs), including commercial and open source offerings. The index compares features such as whether the LLM has been instruct-finetuned, sizes available, and pricing."
+url: "https://sapling.ai/llm/index"
+```
+
+```embed
+title: "large-language-models"
+image: "https://sourceforge.net/favicon.ico"
+description: ""
+url: "https://sourceforge.net/software/large-language-models/"
+```
+
+```embed
+title: "AI programming tool Copilot helps write up to 30% of code on GitHub"
+image: "https://images.axios.com/3mUmsMdL4uELGmEHrRe6F-4apa8=/0x0:1920x1080/1366x768/2021/10/26/1635271101859.jpg"
+description: "The AI pair programmer is a useful assistant, but won’t be replacing human developers any time soon"
+url: "https://www.axios.com/2021/10/27/copilot-artificial-intelligence-coding-github"
+```
+
+```embed
+title: "Is Artificial Intelligence Our “Oppenheimer Moment”? Mo Gawdat’s Warning To The World"
+image: "https://img.youtube.com/vi/Ae4o92F4tVM/maxresdefault.jpg"
+description: "The former Chief Business Officer of GOOGLE X has a WARNING for us about AI and you NEED to hear it! THIS is the turning point for humanity…While many people…"
+url: "https://www.youtube.com/watch?v=Ae4o92F4tVM"
+```
+
+```embed
+title: "Op-Ed: Google AI learns Bengali, and they don’t know why?"
+image: "https://www.digitaljournal.com/wp-content/uploads/2023/03/Artificial-intelligence-logo-AFP-1K-001-1-1024x576.jpg"
+description: "“We don’t know” isn’t good enough."
+url: "https://www.digitaljournal.com/tech-science/op-ed-google-ai-learns-bengali-and-they-dont-know-why/article"
+```
+
+```embed
+title: "Google Surprised When Experimental AI Learns Language It Was Never Trained On"
+image: "https://wp-assets.futurism.com/2023/04/google-ai-bengali.jpg"
+description: "Like a human possessed, an AI made by Google appears to know things it wasn't trained to learn — and yeah, it's freaking us out. "
+url: "https://futurism.com/the-byte/google-ai-bengali"
+```
+
+```embed
+title: "GitHub Copilot AI Tech Upgraded, Already Generates 61% of Java Code -- Visual Studio Magazine"
+image: "https://visualstudiomagazine.com/-/media/ECG/redmondmag/Images/IntroImages2017/1017red_F2Ransomware.jpg"
+description: "GitHub has again upgraded the AI tech behind its Copilot ‘AI pair programmer,’ which reportedly already generates 61 percent of Java Code in editors where it’s used and 46 percent across all languages."
+url: "https://visualstudiomagazine.com/articles/2023/02/15/copilot-upgrade.aspx"
+```
+
+```embed
+title: "Stability AI CEO: There Will Be No (Human) Programmers in Five Years - Decrypt"
+image: "https://cdn.decrypt.co/resize/1024/height/512/wp-content/uploads/2023/07/00032-2610539729-gID_7.png"
+description: "Many believe AI will bring the end of the world, but Emad Mostaque (CEO of Stability AI) believes AI (and humans) can"
+url: "https://decrypt.co/147191/no-human-programmers-five-years-ai-stability-ceo"
+```
+
+```embed
+title: "Why AI Is No Longer About Technology - Ex Google Mo Gawdat Predicts Our Future With Happiness"
+image: "https://img.youtube.com/vi/-OZJRx5FREI/maxresdefault.jpg"
+description: "According to Mo Gawdat, former Chief Business Officer at Google, renowned AI and Happiness Expert, and bestselling author (Solve For Happy, Scary Smart), the…"
+url: "https://www.youtube.com/watch?v=-OZJRx5FREI"
+```
+
+```embed
+title: "Mo Gawdat: Ex-Google Officer Warns About the Dangers of AI, Urges All to Prepare Now!"
+image: "https://img.youtube.com/vi/bJAHhZMtGsU/maxresdefault.jpg"
+description: "So what do you need to know to prepare for the next 5, 10, or 25 years of a world increasingly impacted by artificial intelligence? How could AI change your…"
+url: "https://www.youtube.com/watch?v=bJAHhZMtGsU"
+```
+
+
+```embed
+title: "Large Language Models 101: History, Evolution and Future"
+image: "https://www.scribbledata.io/wp-content/themes/scribble/assets/img/preview.jpg"
+description: "Delve into the definition, evolution, types, applications, and limitations of large language models, and glimpse into their promising future."
+url: "https://www.scribbledata.io/large-language-models-history-evolutions-and-future/"
+```
+
+```embed
+title: "2023-Alan-D-Thompson-AI-Bubbles-Optimal-Rev-4.pdf"
+image: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://s10251.pcdn.co/pdf/2023-Alan-D-Thompson-AI-Bubbles-Optimal-Rev-4.pdf&size=128"
+description: ""
+url: "https://s10251.pcdn.co/pdf/2023-Alan-D-Thompson-AI-Bubbles-Optimal-Rev-4.pdf"
+```
+
+```embed
+title: "A Few Thoughts on the Explosion and Distribution of LLMs and other AI"
+image: "https://danballard.com/favicon.ico"
+description: "The explosion in AI this last year is a lot. The comparisons of Midjourney v1-5 all in the last year are incredible and amazing. And this week with FB’s Llam…"
+url: "https://danballard.com/2023/03/22/thoughts-on-ai-explosion-and-distribution/"
+```
+
+```embed
+title: "Against LLM maximalism · Explosion"
+image: "https://explosion.ai/static/1863c4dfa57ad28dbbd68e432bde34e9/97edd/llm-maximalism_meme.jpg"
+description: "LLMs are not a direct solution to most of the NLP use-cases companies have been working on. They are extremely useful, but if you want to deliver reliable software you can improve over time, you can’t just write a prompt and call it a day. Once you’re past prototyping and want to deliver the best sy…"
+url: "https://explosion.ai/blog/against-llm-maximalism"
+```
+
+```embed
+title: "The race to understand the exhilarating, dangerous world of language AI"
+image: "https://wp.technologyreview.com/wp-content/uploads/2021/05/MIT_AI.Language_final.jpg?resize=1200,600"
+description: "Hundreds of scientists around the world are working together to understand one of the most powerful emerging technologies before it’s too late."
+url: "https://www.technologyreview.com/2021/05/20/1025135/ai-large-language-models-bigscience-project/"
+```
+
+```embed
+title: "Eric Schmidt: This is how AI will transform the way science gets done"
+image: "https://wp.technologyreview.com/wp-content/uploads/2023/06/protein-folding.jpg?resize=1200,600"
+description: "Science is about to become much more exciting—and that will affect us all, argues Google’s former CEO."
+url: "https://www.technologyreview.com/2023/07/05/1075865/eric-schmidt-ai-will-transform-science/"
+```
+```embed
+title: "AI and the future of humanity | Yuval Noah Harari at the Frontiers Forum"
+image: "https://img.youtube.com/vi/LWiM-LuRe6w/maxresdefault.jpg"
+description: "In this keynote and Q&A, Yuval Noah Harari summarizes and speculates on ‘AI and the future of humanity’. There are a number of questions related to this disc…"
+url: "https://www.youtube.com/watch?v=LWiM-LuRe6w&t=1906s"
+```
+
+```embed
+title: "Google fires engineer who contended its AI technology was sentient | CNN Business"
+image: "https://media.cnn.com/api/v1/images/stellar/prod/220723131843-blake-lemoine-restricted.jpg?c=16x9&q=w_800,c_fill"
+description: "Google has fired an engineer who claimed an unreleased AI system had become sentient, the company confirmed, saying he violated employment and data security policies."
+url: "https://edition.cnn.com/2022/07/23/business/google-ai-engineer-fired-sentient/index.html"
+```
+
+```embed
+title: "Exclusive: The $2 Per Hour Workers Who Made ChatGPT Safer"
+image: "https://api.time.com/wp-content/uploads/2023/01/DALL%C2%B7E-2023-01-09-18.12.05-a-seemingly-endless-view-african-workers-at-desks-in-front-of-computer-screens-in-a-printmaking-style.jpg?quality=85&w=1200&h=628&crop=1"
+description: "A TIME investigation reveals the difficult conditions faced by the workers who made ChatGPT possible"
+url: "https://time.com/6247678/openai-chatgpt-kenya-workers/"
+```
+
+```embed
+title: "History Of ChatGPT: A Timeline Of The Meteoric Rise Of Generative AI Chatbots"
+image: "https://www.searchenginejournal.com/wp-content/uploads/2023/06/history-of-chatgpt-timeline-647a74669297c-sej.jpg"
+description: "Explore the history of ChatGPT with a timeline from launch to reaching over 100 million users, 1.6 billion visits, and 200 plugins."
+url: "https://www.searchenginejournal.com/history-of-chatgpt-timeline/488370/#close"
+```
+
+```embed
+title: "WHY GOOGLE New AI ‘GEMINI’ TERRIFIES The ENTIRE Industry!"
+image: "https://img.youtube.com/vi/GDwARowc-yc/maxresdefault.jpg"
+description: "👀 STOP everything and listen up! Google just made a groundbreaking announcement at their recent Google I/O event that has the entire AI industry on the edge…"
+url: "https://www.youtube.com/watch?v=GDwARowc-yc"
+```
+
+## Large language Models
+```embed
+title: "2023 LifeArchitect.ai data (shared)"
+image: "https://lh3.googleusercontent.com/docs/AOD9vFoNqaWqUtYOiTP7wgsCGdZgLsYvoUFVn6gjIKEUSfcx_PVEl88hmWPN4XA8OQoJEmqSpFrC27ml33k4yqiPGzYuvRSVvu8A7W_jjQAXCYW-=w1200-h630-p"
+description: "Large language models (2023) Permalink:,<a href=“https://lifearchitect.ai/models-table/”>https://lifearchitect.ai/models-table/</a>,Also at:,<a href=“https://huggingface.co/spaces/adt/models-table”>https://huggingface.co/spaces/adt/models-table</a>,Timeline view:,<a href=“https://lifearchitect.a…"
+url: "https://docs.google.com/spreadsheets/d/1O5KVQW1Hx5ZAkcg8AIRjbQLQzx2wVaLl0SqUu-ir9Fs/edit#gid=1158069878"
+```
+
+## AI Concerns (Videos)
+```embed
+title: "Why AI Is No Longer About Technology - Ex Google Mo Gawdat Predicts Our Future With Happiness"
+image: "https://img.youtube.com/vi/-OZJRx5FREI/maxresdefault.jpg"
+description: "According to Mo Gawdat, former Chief Business Officer at Google, renowned AI and Happiness Expert, and bestselling author (Solve For Happy, Scary Smart), the…"
+url: "https://www.youtube.com/watch?v=-OZJRx5FREI"
+```
+
+```embed
+title: "MEGATHREAT: Why AI Is So Dangerous & How It Could Destroy Humanity | Mo Gawdat"
+image: "https://img.youtube.com/vi/itY6VWpdECc/maxresdefault.jpg"
+description: "Listen to Impact Theory on Amazon Music: https://music.amazon.com/podcasts/9e0db1b9-b46c-4e50-a9c5-add34b0ffe00/impact-theory-with-tom-bilyeu?ref=dm_sh_nzgPU…"
+url: "https://www.youtube.com/watch?v=itY6VWpdECc"
+```
+
+```embed
+title: "CARL JUNG: El hombre moderno en busca de un alma | El problema espiritual de Occidente"
+image: "https://img.youtube.com/vi/Ts60CP5qubI/maxresdefault.jpg"
+description: "Si comparamos el mundo de hoy con cualquier época previa a la Revolución Industrial, desde el Medievo hasta la Prehistoria, las diferencias son abismales. A…"
+url: "https://youtu.be/Ts60CP5qubI?t=62"
+```
+
+
+```embed
+title: "Is Artificial Intelligence Our “Oppenheimer Moment”? Mo Gawdat’s Warning To The World"
+image: "https://img.youtube.com/vi/Ae4o92F4tVM/maxresdefault.jpg"
+description: "The former Chief Business Officer of GOOGLE X has a WARNING for us about AI and you NEED to hear it! THIS is the turning point for humanity…While many people…"
+url: "https://www.youtube.com/watch?v=Ae4o92F4tVM"
+```
+
+## Social concerns
+```embed
+title: "AI and the future of humanity | Yuval Noah Harari at the Frontiers Forum"
+image: "https://img.youtube.com/vi/LWiM-LuRe6w/maxresdefault.jpg"
+description: "In this keynote and Q&A, Yuval Noah Harari summarizes and speculates on ‘AI and the future of humanity’. There are a number of questions related to this disc…"
+url: "https://www.youtube.com/watch?v=LWiM-LuRe6w"
+```
+
+```embed
+title: "GitHub Copilot, your AI pair programmer - Training"
+image: "https://learn.microsoft.com/en-us/media/open-graph-image.png"
+description: "GitHub Copilot, trained on billions of lines of code, turns natural language prompts into coding suggestions across dozens of languages."
+url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/2-github-copilot-your-ai-pair-programmer"
+```
+
+
+```embed
+title: "Rebeca Hwang | Inteligencia artificial y humanidad | Aprender de Grandes #153"
+image: "https://img.youtube.com/vi/rClYbGGzyek/maxresdefault.jpg"
+description: "Me encanta conversar con gente que se mete en el ojo de la tormenta cuando están pasando cosas transformadoras en el mundo. Tuve el lujo de conversar con Reb…"
+url: "https://youtu.be/rClYbGGzyek?t=1197"
+```
+
+
+
+```embed
+title: "Exclusive: The $2 Per Hour Workers Who Made ChatGPT Safer"
+image: "https://api.time.com/wp-content/uploads/2023/01/DALL%C2%B7E-2023-01-09-18.12.05-a-seemingly-endless-view-african-workers-at-desks-in-front-of-computer-screens-in-a-printmaking-style.jpg?quality=85&w=1200&h=628&crop=1"
+description: "A TIME investigation reveals the difficult conditions faced by the workers who made ChatGPT possible"
+url: "https://time.com/6247678/openai-chatgpt-kenya-workers/"
+```
+
+```embed
+title: "Worldcoin: Sam Altman launches eyeball scanning crypto coin"
+image: "https://ichef.bbci.co.uk/news/1024/branded_news/09B0/production/_130508420_mediaitem130505972.jpg"
+description: "Thousands of people scan their irises via an orb on launch day of “dystopian” crypto project."
+url: "https://www.bbc.com/news/technology-66128111"
+```
+
+```embed
+title: "Is artificial intelligence advancing too quickly? What AI leaders at Google say"
+image: "https://assets2.cbsnewsstatic.com/hub/i/r/2023/04/16/4c75adeb-ca12-426e-bd12-3a5adde32f2c/thumbnail/1200x630/559f05684316f5e602fd713fd06081c9/hadsell-1.jpg?v=181d27d1e918a6408b48ea2e220df310"
+description: "Competitive pressure among tech giants is propelling society into the future of artificial intelligence, ready or not. Scott Pelley dives into the world of AI with Google CEO Sundar Pichai"
+url: "https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/?ftag=CNM-00-10aab7d&linkId=210097927"
+```
+
+```embed
+title: "Yuval Noah Harari Speaks to Young Readers & Teachers About ‘Unstoppable Us’ | Aprendemos Juntos"
+image: "https://img.youtube.com/vi/flQiPH_IFcI/maxresdefault.jpg"
+description: "In this long-form discussion with an audience of young readers and educators, historian and author Yuval Noah Harari explores the stories that have built and…"
+url: "https://www.youtube.com/watch?v=flQiPH_IFcI"
+```
+
+
+## Animal language communciation
+```embed
+title: "Can AI unlock the secrets of animal communication? | Engadget"
+image: "https://s.yimg.com/uu/api/res/1.2/M8D_Mer19tUqJQ8DJZRFIQ--~B/Zmk9ZmlsbDtoPTYzMDtweW9mZj0wO3c9MTIwMDthcHBpZD15dGFjaHlvbg--/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2021-06/bb9c0d30-c53f-11eb-bfdf-fdd7010d3256.cf.jpg"
+description: "Advances in artificial intelligence could decypher animal “language” in the next 10 years or so, scientists claim…"
+url: "https://www.engadget.com/can-ai-unlock-the-secrets-of-animal-communication-170040760.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuYmluZy5jb20v&guce_referrer_sig=AQAAANYhNtkWCT9Tbg2xesXTGkJZdlu6mbI-0h1jSs0tOqmmbpCSZ6GDAzcw5ekV_-SuS_nKPfLdnh_nlaZhTuqLA4Z4ioXRpdUS6p0pRTcsYf-RkDeg-d4mk9iMvLccQbZiRIn5CV1xV3ZZo6lBCtf-X5OUd_BRktg04NTzGmWx52nb"
+```
+
+```embed
+title: "Can artificial intelligence really help us talk to the animals?"
+image: "https://i.guim.co.uk/img/media/9e82780e731a7ec3a98a0a9022610609250dc021/0_0_5000_3000/master/5000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdG8tZGVmYXVsdC5wbmc&enable=upscale&s=352be4bbaf4d624517c561bfc2963e5b"
+description: "A California-based organisation wants to harness the power of machine learning to decode communication across the entire animal kingdom. But the project has its doubters"
+url: "https://www.theguardian.com/science/2022/jul/31/can-artificial-intelligence-really-help-us-talk-to-the-animals"
+```
+
+```embed
+title: "Humans May Be Shockingly Close to Decoding the Language of Animals"
+image: "https://hips.hearstapps.com/hmg-prod/images/close-up-side-view-of-fish-over-green-background-royalty-free-image-1674849560.jpg?crop=1.00xw:0.759xh;0,0.0554xh&resize=1200:*"
+description: "But we might not like what they have to say."
+url: "https://www.popularmechanics.com/science/animals/a42689511/humans-could-decode-animal-language/"
+```
+
+## AI And code
+```embed
+title: "Almost 30 percent of new GitHub code is written with AI assistance"
+image: "https://www.techspot.com/images2/news/bigimage/2021/10/2021-10-28-image-28.jpg"
+description: "If you haven’t heard of Copilot before, it’s essentially the equivalent of the predictive text systems you’d find on Gmail or even your phone. You start typing…"
+url: "https://www.techspot.com/news/91984-almost-30-percent-new-github-code-written-ai.html#:~:text=Almost%2030%20percent%20of%20new%20GitHub,code%20is%20written%20with%20AI%20assistance"
+```
+
+```embed
+title: "GitHub Copilot AI Tech Upgraded, Already Generates 61% of Java Code -- Visual Studio Magazine"
+image: "https://visualstudiomagazine.com/-/media/ECG/redmondmag/Images/IntroImages2017/1017red_F2Ransomware.jpg"
+description: "GitHub has again upgraded the AI tech behind its Copilot ‘AI pair programmer,’ which reportedly already generates 61 percent of Java Code in editors where it’s used and 46 percent across all languages."
+url: "https://visualstudiomagazine.com/articles/2023/02/15/copilot-upgrade.aspx"
+```
+
+```embed
+title: "Awesome ChatGPT Prompts"
+image: "https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"
+description: "This repo includes ChatGPT prompt curation to use ChatGPT better."
+url: "https://prompts.chat/"
+```
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+	<script src="plugin/reveal-pointer/pointer.js"></script>
+	<script src="plugin/elapsed-time-bar/elapsed-time-bar.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer,
+		  RevealChalkboard, 
+		  ElapsedTimeBar
+        ],
+
+
+    	allottedTime: 2700 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":540,"margin":0,"maxScale":4,"controls":true,"progress":true,"slideNumber":"true","transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
